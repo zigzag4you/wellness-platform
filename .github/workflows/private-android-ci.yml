@@ -8,6 +8,10 @@ on:
         required: true
         default: "main"
         type: string
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/private-android-ci.yml"
 
 permissions:
   contents: read
@@ -36,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: zigzag4you/wellness-platform-dev
-          ref: ${{ inputs.source_ref }}
+          ref: ${{ inputs.source_ref || 'main' }}
           token: ${{ secrets.PRIVATE_REPO_READ_TOKEN }}
           path: private-source
           persist-credentials: false
@@ -87,6 +91,8 @@ jobs:
 
       - name: Run Android emulator instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
+        env:
+          ANDROID_I_WANT_MY_TCG: "yes"
         with:
           api-level: 35
           target: google_apis
@@ -101,7 +107,7 @@ jobs:
           {
             echo "## Verification"
             echo "- Private repository: zigzag4you/wellness-platform-dev"
-            echo "- Source ref requested: ${{ inputs.source_ref }}"
+            echo "- Source ref requested: ${{ inputs.source_ref || 'main' }}"
             echo "- Source SHA: ${{ steps.source.outputs.sha }}"
             echo "- APKs and source files are not uploaded to this public repository."
           } >> "$GITHUB_STEP_SUMMARY"
