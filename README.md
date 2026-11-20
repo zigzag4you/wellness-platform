@@ -1,42 +1,44 @@
 # Family Health Platform
 
-An offline-first family health, nutrition, fitness, and smart-kitchen application for Android and iOS.
+An offline-first family health, nutrition, fitness, weight-management, and smart-kitchen application for **Android only**.
 
-**Current state:** project foundation only. No production-ready application or release is available yet.
+**Development status:** an early native Android implementation is under active development in a separate private repository. It currently includes Arabic RTL family-profile flows and encrypted measurement storage. The relational Room + SQLCipher foundation is present but is not yet verified or connected to the active UI. This is not a production-ready app and no release APK is published.
 
-## Principles
-- Designed for family members across age groups, with age-appropriate safeguards.
-- Local-first data storage and privacy-conscious defaults.
-- Core functionality does not depend on a cloud service or language model.
-- Health calculations are deterministic, documented, and separated from generative AI.
-- Optional AI is intended to run on-device only.
-- No advertising or behavioral tracking is planned.
+## Product direction
+- Family-oriented support for children, teenagers, adults, and older adults.
+- Native Android: Kotlin, Jetpack Compose, Android SDK, and Gradle. iOS, Flutter, and Dart are out of scope.
+- Offline-first and local-only by default; the core app must not depend on cloud services.
+- Optional AI is intended to run entirely on-device. AI does not perform clinical calculations.
+- No advertising, behavioral tracking, or unnecessary network access.
+- Health calculations must be deterministic, sourced, versioned, and tested.
 
-## Repository purpose
-This is the public, selectively curated release repository. It is not a mirror of the private development repository. Internal project memory, private planning, sensitive test data, and unreviewed history must never be published here.
+## Privacy and safety
+- Health data is intended to remain on the device and be encrypted at rest.
+- The current implementation is incomplete; encryption, recovery, and security have not received final production approval.
+- Use synthetic data only during development and testing.
+- This software is not a medical device and does not diagnose or treat disease, prescribe medication, or replace qualified professionals.
+- Children and teenagers require age-appropriate safeguards. Adult formulas and restrictive weight-loss or calorie targets must not be applied to minors.
+- Pregnancy, breastfeeding, older age, and health conditions require appropriately scoped pathways and safeguards.
 
-## Safety
-This software is not a medical device and does not diagnose or treat disease, prescribe medication, or replace qualified professionals. Features involving minors require age-appropriate safeguards and guardian involvement. Adult weight and calorie rules must not be applied to children or teenagers.
+## Repository purpose and publication policy
+This is the **public project and verification repository**, not a mirror of the private development repository. Application source, internal project memory, private planning, sensitive test data, credentials, and unreviewed history must not be published here. Public product/source releases require a separate review and explicit approval.
 
-## Project status
-Specifications and architecture are being developed privately before implementation. No commercial product name, logo, or open-source license has been approved. Do not assume permission to reuse, redistribute, or modify this repository until a license is explicitly added.
+No commercial product name, logo, or open-source license has been approved. Do not assume permission to reuse, redistribute, or modify this repository until a license is explicitly added.
 
-## Languages
-The intended product and project documentation support Arabic and English.
+## Android source verification
+The workflow at [`.github/workflows/private-android-ci.yml`](.github/workflows/private-android-ci.yml) checks out the private Android source using a fine-grained read-only token and runs verification on GitHub-hosted runners.
 
-
-## Private Android verification
-
-This public repository contains a manually triggered CI workflow only; it does not mirror or contain the private application source.
-
-- Workflow: `.github/workflows/private-android-ci.yml`
-- It checks out the selected revision of `zigzag4you/wellness-platform-dev` using a read-only token stored as the Actions secret `PRIVATE_REPO_READ_TOKEN`.
-- It runs Kotlin unit tests, Android lint, a debug APK assembly, and emulator instrumentation tests on standard GitHub-hosted Ubuntu runners.
-- The APK, source tree, and build outputs are not uploaded or published. The runner is ephemeral.
-- The workflow is manual-only (`workflow_dispatch`) to avoid exposing a private-repository credential to untrusted pull-request or push workflows.
+- Triggers: manual dispatch, plus a push limited to changes in the workflow file itself.
+- Private source: `zigzag4you/wellness-platform-dev`.
+- Required Actions secret: `PRIVATE_REPO_READ_TOKEN`, restricted to the private repository with **Contents: Read-only**.
+- Checks: Gradle wrapper integrity, Kotlin unit tests, Android lint, debug APK assembly, and Android emulator instrumentation tests.
+- The workflow does not upload or publish the private source, APK, or build outputs. Its logs and summaries are visible in this public repository and may identify the exact private source revision.
+- This workflow is a verification mechanism, not a public application release.
 
 ### One-time setup
+Create a fine-grained token restricted to `wellness-platform-dev` with **Contents: Read-only**, then add it to this repository under **Settings → Secrets and variables → Actions** using the exact name `PRIVATE_REPO_READ_TOKEN`. Never put the token in files, issues, commits, or chat.
 
-Create a fine-grained personal access token restricted to the private repository `wellness-platform-dev`, with **Contents: Read-only** permission, then add it to this public repository under **Settings → Secrets and variables → Actions** with the exact name `PRIVATE_REPO_READ_TOKEN`. Do not paste the token into issues, files, commits, or chat.
+Run it from **Actions → Private Android source verification → Run workflow**, selecting `main` or an exact source commit SHA.
 
-Then open **Actions → Private Android source verification → Run workflow**, choose `main` (or an exact commit SHA), and run it. Workflow logs and the verification summary are public; they contain the source revision and step results, not the application source or APK.
+## Languages
+Project documentation is maintained in Arabic and English. The application UI is currently being developed with Arabic RTL support.
