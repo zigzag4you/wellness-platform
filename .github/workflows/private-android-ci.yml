@@ -119,5 +119,7 @@ jobs:
             echo "- Private repository: zigzag4you/wellness-platform-dev"
             echo "- Source ref requested: ${{ inputs.source_ref || 'main' }}"
             echo "- Source SHA: ${{ steps.source.outputs.sha }}"
+            echo "- Gradle wrapper JAR SHA-256: verified"
+            echo "- Gradle distribution: pinned 8.13 with SHA-256 validation"
             echo "- APKs and source files are not uploaded to this public repository."
           } >> "$GITHUB_STEP_SUMMARY"
