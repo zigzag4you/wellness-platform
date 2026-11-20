@@ -1,4 +1,5 @@
 # CI workflow revision: revalidate latest private Android source and reconciled architecture/security documentation.
+# Instrumentation assertion policy: verify durable UI/data outcomes, not transient confirmation banners.
 name: Private Android source verification
 
 on:
