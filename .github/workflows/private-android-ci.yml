@@ -2,6 +2,7 @@
 # Instrumentation assertion policy: verify durable UI/data outcomes, not transient confirmation banners.
 # Source update: verify family profiles, nutrition, kitchen recipes, and the new activity/water/sleep logging module.
 # Source update: keep the active family list searchable and addable after first profile creation.
+# Source update: compile offline USDA importer nullability fixes and meal-log/lifestyle screens.
 name: Private Android source verification
 
 on:
