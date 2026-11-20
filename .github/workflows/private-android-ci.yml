@@ -6,6 +6,7 @@
 # Safety regression: minors' weight-change goals always require specialist review.
 # Product update: verify encrypted pantry expiry tracking and per-profile allergy/dietary restrictions screens.
 # Product update: verify recipe screening against profile restrictions, meal nutrient estimates, compact navigation, and measurement trends.
+# Compile fix: keep More NavigationBarItem directly in RowScope while anchoring its dropdown inside the icon.
 name: Private Android source verification
 
 on:
