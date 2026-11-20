@@ -89,6 +89,7 @@ jobs:
         working-directory: private-source
         run: gradle --no-daemon :app:assembleDebug
 
+      # TCG is explicitly enabled for GitHub-hosted runners without KVM.
       - name: Run Android emulator instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         env:
@@ -97,6 +98,10 @@ jobs:
           api-level: 35
           target: google_apis
           arch: x86_64
+          emulator-boot-timeout: 900
+          disable-animations: true
+          disable-linux-hw-accel: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           working-directory: private-source
           script: gradle --no-daemon :app:connectedDebugAndroidTest
 
