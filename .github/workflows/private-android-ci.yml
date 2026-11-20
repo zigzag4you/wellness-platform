@@ -9,6 +9,7 @@
 # Compile fix: keep More NavigationBarItem directly in RowScope while anchoring its dropdown inside the icon.
 # Product update: verify pantry consumption, adult-only behavioral goals, and end-to-end per-profile allergen recipe screening.
 # Dashboard and daily-summary updates; fix Android test selector imports and run the expanded end-to-end flows.
+# Product update: verify calendar-aware pantry expiry states and boundary unit tests.
 name: Private Android source verification
 
 on:
