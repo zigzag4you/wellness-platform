@@ -5,6 +5,7 @@
 # Run 14: validate the complete current private-source HEAD; no APK or source artifact is published.
 # Safety regression: minors' weight-change goals always require specialist review.
 # Product update: verify encrypted pantry expiry tracking and per-profile allergy/dietary restrictions screens.
+# Product update: verify recipe screening against profile restrictions, meal nutrient estimates, compact navigation, and measurement trends.
 name: Private Android source verification
 
 on:
