@@ -1,8 +1,8 @@
 # CI workflow revision: verify current private Android source and preserve sufficient time for full TCG instrumentation.
 # Instrumentation assertion policy: verify durable UI/data outcomes, not transient confirmation banners.
-# Source update: verify family profiles, nutrition, kitchen recipes, and the new activity/water/sleep logging module.
-# Source update: keep the active family list searchable and addable after first profile creation.
-# Source update: compile offline USDA importer nullability fixes and meal-log/lifestyle screens.
+# Source update: verify family-profile search timing, encrypted nutrition catalogue and recipe-builder UI.
+# Source update: verify expanded Room schema, atomic JSON migration, and offline USDA Foundation Foods ZIP importer.
+# Run 14: validate the complete current private-source HEAD; no APK or source artifact is published.
 name: Private Android source verification
 
 on:
