@@ -23,3 +23,20 @@ Specifications and architecture are being developed privately before implementat
 
 ## Languages
 The intended product and project documentation support Arabic and English.
+
+
+## Private Android verification
+
+This public repository contains a manually triggered CI workflow only; it does not mirror or contain the private application source.
+
+- Workflow: `.github/workflows/private-android-ci.yml`
+- It checks out the selected revision of `zigzag4you/wellness-platform-dev` using a read-only token stored as the Actions secret `PRIVATE_REPO_READ_TOKEN`.
+- It runs Kotlin unit tests, Android lint, a debug APK assembly, and emulator instrumentation tests on standard GitHub-hosted Ubuntu runners.
+- The APK, source tree, and build outputs are not uploaded or published. The runner is ephemeral.
+- The workflow is manual-only (`workflow_dispatch`) to avoid exposing a private-repository credential to untrusted pull-request or push workflows.
+
+### One-time setup
+
+Create a fine-grained personal access token restricted to the private repository `wellness-platform-dev`, with **Contents: Read-only** permission, then add it to this public repository under **Settings → Secrets and variables → Actions** with the exact name `PRIVATE_REPO_READ_TOKEN`. Do not paste the token into issues, files, commits, or chat.
+
+Then open **Actions → Private Android source verification → Run workflow**, choose `main` (or an exact commit SHA), and run it. Workflow logs and the verification summary are public; they contain the source revision and step results, not the application source or APK.
