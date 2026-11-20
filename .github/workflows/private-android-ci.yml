@@ -1,3 +1,4 @@
+# CI workflow revision: revalidate latest private Android source after instrumentation test fixes.
 name: Private Android source verification
 
 on:
