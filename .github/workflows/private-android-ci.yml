@@ -62,10 +62,15 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Gradle 8.13
+      - name: Configure Gradle caching and wrapper validation
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: "8.13"
+
+      - name: Verify Gradle Wrapper integrity and initialize pinned distribution
+        working-directory: private-source
+        shell: bash
+        run: |
+          echo "81a82aaea5abcc8ff68b3dfcb58b3c3c429378efd98e7433460610fecd7ae45f  gradle/wrapper/gradle-wrapper.jar" | sha256sum --check -
+          ./gradlew --version
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
@@ -79,15 +84,15 @@ jobs:
 
       - name: Run Kotlin unit tests
         working-directory: private-source
-        run: gradle --no-daemon :app:testDebugUnitTest
+        run: ./gradlew --no-daemon :app:testDebugUnitTest
 
       - name: Run Android lint
         working-directory: private-source
-        run: gradle --no-daemon :app:lintDebug
+        run: ./gradlew --no-daemon :app:lintDebug
 
       - name: Assemble debug APK (not published or uploaded)
         working-directory: private-source
-        run: gradle --no-daemon :app:assembleDebug
+        run: ./gradlew --no-daemon :app:assembleDebug
 
       # TCG is explicitly enabled for GitHub-hosted runners without KVM.
       - name: Run Android emulator instrumentation tests
@@ -103,7 +108,7 @@ jobs:
           disable-linux-hw-accel: true
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           working-directory: private-source
-          script: gradle --no-daemon :app:connectedDebugAndroidTest
+          script: ./gradlew --no-daemon :app:connectedDebugAndroidTest
 
       - name: Verification summary
         if: always()
