@@ -7,6 +7,7 @@
 # Product update: verify encrypted pantry expiry tracking and per-profile allergy/dietary restrictions screens.
 # Product update: verify recipe screening against profile restrictions, meal nutrient estimates, compact navigation, and measurement trends.
 # Compile fix: keep More NavigationBarItem directly in RowScope while anchoring its dropdown inside the icon.
+# Product update: verify pantry consumption, adult-only behavioral goals, and end-to-end per-profile allergen recipe screening.
 name: Private Android source verification
 
 on:
