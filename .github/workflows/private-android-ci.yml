@@ -1,4 +1,4 @@
-# CI workflow revision: revalidate latest private Android source and reconciled architecture/security documentation.
+# CI workflow revision: verify current private Android source and preserve sufficient time for full TCG instrumentation.
 # Instrumentation assertion policy: verify durable UI/data outcomes, not transient confirmation banners.
 name: Private Android source verification
 
@@ -26,7 +26,7 @@ jobs:
   verify:
     name: Build and test private Android source
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 75
     steps:
       - name: Validate private repository read token
         shell: bash
