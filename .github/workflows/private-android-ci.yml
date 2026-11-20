@@ -6,6 +6,7 @@
 # Safety regression: minors' weight-change goals always require specialist review.
 # Product update: verify encrypted pantry expiry tracking and per-profile allergy/dietary restrictions screens.
 # Product update: verify recipe screening against profile restrictions, meal nutrient estimates, compact navigation, and measurement trends.
+# Product update: verify symptom journal, encrypted meal planning, generated checkable shopping lists, expiry-aware recipe suggestions, and measurement trend chart.
 # Compile fix: keep More NavigationBarItem directly in RowScope while anchoring its dropdown inside the icon.
 # Product update: verify pantry consumption, adult-only behavioral goals, and end-to-end per-profile allergen recipe screening.
 # Dashboard and daily-summary updates; fix Android test selector imports and run the expanded end-to-end flows.
@@ -29,7 +30,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: private-android-verification
+  group: private-android-verification-v2
   cancel-in-progress: true
 
 jobs:
