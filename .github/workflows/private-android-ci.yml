@@ -1,4 +1,4 @@
-# CI workflow revision: revalidate private source after correcting profile fixtures and UI save assertions.
+# CI workflow revision: revalidate latest private Android source and reconciled architecture/security documentation.
 name: Private Android source verification
 
 on:
