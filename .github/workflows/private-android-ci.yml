@@ -1,6 +1,7 @@
 # CI workflow revision: verify current private Android source and preserve sufficient time for full TCG instrumentation.
 # Instrumentation assertion policy: verify durable UI/data outcomes, not transient confirmation banners.
 # Source update: verify family profiles, nutrition, kitchen recipes, and the new activity/water/sleep logging module.
+# Source update: keep the active family list searchable and addable after first profile creation.
 name: Private Android source verification
 
 on:
