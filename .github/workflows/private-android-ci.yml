@@ -20,7 +20,7 @@ on:
       source_ref:
         description: "Branch, tag, or commit SHA in zigzag4you/wellness-platform-dev"
         required: true
-        default: "main"
+        default: "fix/instrumentation-compose-test-imports"
         type: string
 
 permissions:
